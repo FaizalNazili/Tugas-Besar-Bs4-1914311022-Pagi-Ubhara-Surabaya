@@ -1,0 +1,228 @@
+// one google ad will already have been generated.
+// this code will create up to 2 more google ads, plus non-google ads if adnum>2, plus the exasin box if exasin!=0.
+
+var jqhite = $('#innerT').height() + 2;
+var LHite = $('#lowerHite').height() * 0.9146;
+var totHite=Math.floor(jqhite+LHite);
+if (totHite<=adhitefactor) {var h101=1;}
+if (totHite>adhitefactor) {var h101=(totHite)/(adhitefactor+adspacehite);}
+if (h101<1) {h101=1;}
+var h102=Math.floor(h101);
+var adnum=h102;
+var h103=(h102*(adhitefactor+adspacehite))-adspacehite;
+
+if (h103<jqhite) {
+  if (h103 + adhitefactor + adspacehite < totHite) {
+    adnum+=1;
+    exasin=0;
+  }
+}
+
+if (riteorleft==1) { $('').replaceAll( $('#TTTL') ); }  // moved this here from .htm files Aug 11, 2015
+
+if (h103 + 280 + adspacehite >= totHite) {exasin=0;}
+
+adnum=adnum-1;          // added these 2 lines after the 1st google ad was generated independently
+if (adnum<0) {adnum=0;} // added these 2 lines after the 1st google ad was generated independently
+
+// begin draw google ad in TLad div if adnum<2
+if (adnum<2) {
+var TLadstring='<p style="margin-bottom:22px; text-align:center;"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script>'+
+'<ins class="adsbygoogle" style="display:inline-block;width:970px;height:90px" data-ad-client="ca-pub-0780163802383173" data-ad-slot="4342201832"><\/ins>'+
+'<script>'+
+'(adsbygoogle = window.adsbygoogle || []).push(\{\})\;'+
+'<\/script></p>'
+$(TLadstring).replaceAll( $('#TLad') );
+}
+// end draw google ad in TLad div if adnum<2
+
+if (adnum>0) {
+
+var adstr = new Array (adnum);
+
+if (adnum<=2) {var adnumc=adnum;} // if adnum<=2, then all tall ads are google
+if (adnum>2) {var adnumc=2;}      // if adnum>2, then at least 1 tall ad is non-google 
+
+// begin google ad code
+for (c0=1; c0<=adnumc; c0++) {
+adstr[c0-1]='<table border=0 cellspacing=0 cellpadding=0 style="width:'+String(tallwid[s]+tallmar)+'px; margin-bottom:'+String(adspacehite)+'px; margin-top:0px"><tr><td style="text-align:'+String(talllorr)+'; vertical-align:top">';
+adstr[c0-1]+='<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"><\/script>';
+adstr[c0-1]+='<ins class="adsbygoogle"'+
+'     style="display:inline-block;width:'+String(tallwid[s])+'px;height:600px"'+
+'     data-ad-client="ca-pub-0780163802383173"';
+if (riteorleft==0 && s==0) {adstr[c0-1]+='     data-ad-slot="2774662235"></ins>';} // 160 left image
+if (riteorleft==1 && s==0) {adstr[c0-1]+='     data-ad-slot="8681595038"></ins>';} // 160 right image
+if (riteorleft==0 && s==1) {adstr[c0-1]+='     data-ad-slot="4111794635"></ins>';} // 120 left image
+if (riteorleft==1 && s==1) {adstr[c0-1]+='     data-ad-slot="5448927033"></ins>';} // 120 right image
+adstr[c0-1]+='<script>(adsbygoogle = window.adsbygoogle || []).push(\{\})\;<\/script></td></tr></table>';
+} // end for c0=1
+// end of google ad code
+
+// below is the code for non-google ads, which will be drawn if adnum>2
+if (adnum>2) {
+// In the line below, the value of 0 for s means the skyscraper ads are 160 pixels wide. This value is set in tttl-1st.js.
+if (s==0) {
+
+// BEGIN nGoo ARRAY ASSIGNMENTS
+var nGoo = [
+
+// IMPORTANT: when adding or removing ads from the list below, remember to
+// make corresponding a change to the variable "highest160" in tttl-1st.js.
+// highest160 should equal the number of elements in the nGoo array minus 1.
+
+// begin 0: amazon search
+'<TABLE style="float:'+String(talllorr)+'; width:160px; height:600px" BORDER=0 CELLPADDING=1 cellspacing=0 BGCOLOR="#000000">'+
+'<TR><TD><TABLE style="margin:auto; width:158px; height:598px" BORDER=0 CELLPADDING=4 cellspacing=0 BGCOLOR="#FFFFFF">'+
+'<TR><TD COLSPAN=2 style="vertical-align:top; text-align:center" BGCOLOR="#000000">'+
+'<a href="https://www.amazon.com/exec/obidos/redirect-home/wavsourcecom-20" target="_blank"><IMG src="/logos/pdm-search-logo-126x32.gif" BORDER=0 title="In Association with Amazon.com" alt=""></a>'+
+'</TD></TR><TR><TD BGCOLOR="#FFFFFF" style="vertical-align:top; text-align:left" COLSPAN=2>'+
+'<FORM METHOD="get" ACTION="https://www.amazon.com/exec/obidos/external-search" target="_blank">'+
+'<font face="verdana,arial,helvetica" size="-2">'+
+'<input type="radio" name="mode" value="blended" checked>All Products<br>'+
+'<input type="radio" name="mode" value="alexa-skills">Alexa Skills<br>'+
+'<input type="radio" name="mode" value="amazon-devices">Amazon Devices<br>'+
+'<input type="radio" name="mode" value="mobile-apps">Mobile Apps<br>'+
+'<input type="radio" name="mode" value="stripbooks">Books<br>'+
+'<input type="radio" name="mode" value="digital-text">Kindle Store<br>'+
+'<input type="radio" name="mode" value="audible">Audible Books<br>'+
+'<input type="radio" name="mode" value="popular">CD & Vinyl<br>'+
+'<input type="radio" name="mode" value="digital-music">Digital Music<br>'+
+//'<input type="radio" name="mode" value="classical-music">Classical Music<br>'+
+'<input type="radio" name="mode" value="collectibles">Collectibles<br>'+
+'<input type="radio" name="mode" value="movies-tv">Movies & TV<br>'+
+'<input type="radio" name="mode" value="instant-video">Prime Video<br>'+
+'<input type="radio" name="mode" value="computers">Computers<br>'+
+'<input type="radio" name="mode" value="videogames">Computer Games<br>'+
+'<input type="radio" name="mode" value="videogames">Video Games<br>'+
+'<input type="radio" name="mode" value="appliances">Appliances<br>'+
+'<input type="radio" name="mode" value="electronics">Electronics<br>'+
+//'<input type="radio" name="mode" value="photo">Camera & Photo<br>'+
+'<input type="radio" name="mode" value="gourmet">Gourmet Food<br>'+
+'<input type="radio" name="mode" value="software">Software<br>'+
+'<input type="radio" name="mode" value="toys">Toys & Games<br>'+
+'<input type="radio" name="mode" value="tools">Tools & Hardware<br>'+
+'<input type="radio" name="mode" value="sporting">Sports & Outdoors<br>'+
+'<input type="radio" name="mode" value="kitchen">Kitchen & Housewares<br>'+
+'<input type="radio" name="mode" value="mobile">Cell Phones<br>'+
+'<input type="radio" name="mode" value="pets">Pet Supplies<br>'+
+'<br>Search by keywords:<br>'+
+'<INPUT TYPE="text" NAME="keyword" SIZE=13 VALUE="">'+
+'<INPUT TYPE="hidden" NAME="tag" VALUE="wavsourcecom-20">'+
+'<INPUT TYPE="hidden" NAME="sort" VALUE="review-rank">'+
+'<INPUT TYPE="image" WIDTH=21 HEIGHT=21 BORDER=0 VALUE="Go" NAME="Go" src="/logos/pdm-search-go-btn.gif" ALIGN="absmiddle">'+
+'</font></FORM>'+
+'</TD></TR><TR><TD COLSPAN=2 style="vertical-align:top; text-align:center" BGCOLOR="#000000">'+
+'<a href="https://www.amazon.com/exec/obidos/redirect-home/wavsourcecom-20" target="_blank"><IMG src="/logos/pdm-search-logo-126x32.gif" BORDER=0 ALT="In Association with Amazon.com"></a>'+
+'</TD></TR></TABLE></TD></TR></TABLE>',
+
+// IMPORTANT: when adding or removing ads from the list below, remember to make corresponding change to the variable "highest160" in tttl-1st.js
+// highest160 should have the same value as the highest-numbered ad in the list.
+
+// begin 1: Amazon Kindle TradeIn: 20% off + Gift Card
+'<iframe src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=tradein_erd_20off&banner=1E5JWNENRC41H5C98682&f=ifr&lt1=_blank&linkID=d5c06697b11ada626de2c2e78c5a3f37&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 2: Amazon Echo Show
+'<iframe src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=echo&banner=0DZVD3W4B7XXWMDZMWG2&f=ifr&lt1=_blank&linkID=3442684b660d1affee7ec3e22a94a6af&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 3: Amazon Most Wished For Items
+'<iframe src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=mostwishforitem&banner=168A4WN4A9CF8Z4R3V82&f=ifr&lt1=_blank&linkID=0e880ab6ce28793dfdb5ac32f61982c5&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 4: Amazon Top Gift Ideas
+'<iframe src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=topgiftideas&banner=1PS7NTZH9Z597A9KKWR2&f=ifr&lt1=_blank&linkID=fa20f759a6a9040b167adef89a722088&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 5: amazon-kindle ... IMPORTANT: This Kindle ad does not work well on smartphones or tablets. See code at end of this list that replaces this code with Amazon search code depending on operating system.
+'<iframe name="amazon-kindle" id="amazon-kindle" src="https://rcm-na.amazon-adsystem.com/e/cm?t=wavsourcecom-20&o=1&p=14&l=ur1&category=kindle&banner=1Z4BGFAR9ST7BT0409R2&f=ifr&lt1=_blank" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 6: amazon-gift-card
+'<iframe name="amazon-gift-card" id="amazon-gift-card" src="https://rcm-na.amazon-adsystem.com/e/cm?t=wavsourcecom-20&o=1&p=14&l=ur1&category=gift_certificates&banner=0S32YAVKXXKQGNQSSGG2&lt1=_blank&f=ifr" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 7: Amazon Prime - Gift
+'<iframe name="amazon-prime-gift" id="amazon-prime-gift" src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=primegift&lt1=_blank&banner=0ZWKW7ZFNM91W64BCX02&f=ifr&linkID=92bd94f51c5297301dfd152358489182&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 8: Amazon Electronics, Computers & Accessories - 30% hard drives
+'<iframe src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=computers_accesories&lt1=_blank&banner=1YTPXBJ277Z7HVGN4182&f=ifr&linkID=3074a9c618f93d6b18102855a4b9a045&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 9: amazon rotating link for music & entertainment
+'<iframe name="amazon-rotate-music-entertainment" id="amazon-rotate-music-entertainment" src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=musicandentertainmentrot&f=ifr&lt1=_blank&linkID=6f6c5c608705605251c8595be7eef52d&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 10: amazon rotating banner for kindle
+'<iframe name="amazon-rotate-kindle" id="amazon-rotate-kindle" src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=kindlerotating&f=ifr&lt1=_blank&linkID=e0674e231c780fa1714eb53f85d1209d&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 11: amazon prime free trial (bounty)
+'<iframe name="amazon-prime-free-trial" id="amazon-prime-free-trial" src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=primemain&banner=161E7D8SBJFWK4M9MNG2&f=ifr&lt1=_blank&linkID=24e4e0a3f8d9e388c23f7115cb419c05&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin XX: amazon prime marvelous mrs. maisel
+//'<iframe name="amazon-prime3" id="amazon-prime3" src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=primeent&banner=1N0G9R732K82F1HCKE02&f=ifr&lt1=_blank&linkID=cb94c30ecbd3a3bb3b2bec69b5f08fe2&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin XX: amazon prime generic
+//'<iframe name="amazon-prime4" id="amazon-prime4" src="https://rcm-na.amazon-adsystem.com/e/cm?o=1&p=14&l=ur1&category=primeent&banner=1NDRZ5MHQWWTXZMB34G2&f=ifr&lt1=_blank&linkID=fb275d47e7362ea24136252a810df500&t=wavsourcecom-20&tracking_id=wavsourcecom-20" width="160" height="600" scrolling="no" border="0" marginwidth="0" style="border:none;" frameborder="0"></iframe>',
+// begin 12: Walmart, expires 1-15-2022. Household essentials
+'<a href="https://linksynergy.walmart.com/fs-bin/click?id=2GqXwp1ktwQ&offerid=223073.10005389&subid=0&type=4" TARGET="_BLANK"><IMG border="0" alt="Wal-Mart.com USA, LLC" src="https://ad.linksynergy.com/fs-bin/show?id=2GqXwp1ktwQ&bids=223073.10005389&subid=0&type=4&gridnum=9"><img src="//beacon.affil.walmart.com/affil/ttap.gif?affillt=4&affilwmls=2GqXwp1ktwQ&affilsid=0&affiloid=223073.10005389" style="display:none;"/></a>']
+
+// begin 13: Make element 13 equal to element 0 (zero) THEREFORE...  Make highest160 equal 13
+nGoo[13]=nGoo[0]; // This gives Amazon Search an additional chance to be chosen.
+
+// END OF nGoo ARRAY ASSIGNMENTS
+
+// This comment written June 6, 2018. In the line below that is commented-out, the
+// variable hyest was given the value of highest160, which is set in tttl-1st.js.
+// Not sure why I did it that way, but that approach creates a situation where
+// tttl-1st.js needs to be edited and uploaded anytime the number of elements in
+// nGoo is changed. THAT IS STILL THE CASE. However, the next three active lines
+// of code below, which were added June 6, 2018, contain safeguards to protect the
+// value of hyest in the event highest160 does not exist or is too high or too low.
+
+// var hyest=highest160; // commented-out June 6, 2018
+var hyest=nGoo.length-1;
+if (highest160) {hyest=highest160;}
+if (hyest<=0 || highest160=='undefined' || hyest>nGoo.length-1) {hyest=nGoo.length-1;}
+
+// For line below, see comment above the line containing Amazon kindle ad code, within nGoo
+if (navigator.userAgent.indexOf('Android')>-1 || navigator.userAgent.indexOf('iPad')>-1 || navigator.userAgent.indexOf('iPhone')>-1) {nGoo[5]=nGoo[0];}
+
+} // end if (s==0)
+
+var iwid=Math.round(hyest*Math.random());
+for (c0=3; c0<=adnum; c0++) {
+if (iwid>hyest) {iwid=iwid-hyest-1;}
+if (iwid<0) {iwid=0;}
+adstr[c0-1]='<table border=0 cellspacing=0 cellpadding=0 style="width:'+String(tallwid[s]+tallmar)+'px; margin-bottom:'+String(adspacehite)+'px; margin-top:0px"><tr><td style="text-align:'+String(talllorr)+'; vertical-align:top">';
+adstr[c0-1]+=String(nGoo[iwid])+'</td></tr></table>';
+iwid+=c0+Math.round(4*Math.random()+1);
+//if (c0==3) {iwid+=2;}
+//if (c0>3) {iwid+=c0-2;}
+} // end for c0
+} // end if (adnum>2)
+// end of non-google ad code
+
+
+//begin adstring assembly
+var adstring=adstr[0];
+if (adnum>1) {
+for (c0=1; c0<=adnum-1; c0++) {
+adstring+=adstr[c0];
+}
+}
+// pause adstring assembly
+
+} // end if adnum>0
+
+// begin exasin code, if exasin does not equal zero
+if (exasin!=0) {
+if (s==0) {
+var exasinad='<table style="width:160px; height:280px; float:'+String(talllorr)+'" border=1 cellspacing=0 cellpadding=0><tr>';
+}
+if (s==1) {
+var exasinad='<table style="width:120px; height:240px; float:'+String(talllorr)+'" border=0 cellspacing=0 cellpadding=0><tr>';
+}
+exasinad+='<td bgcolor="white" style="text-align:center; vertical-align:middle">';
+// NEXT LINE ADDED DEC 10, 2016
+exasinad+='<iframe name="extrabox" id="extrabox" style="width:120px;height:240px;" marginwidth="0" marginheight="0" scrolling="no" frameborder="0" src="https://ws-na.amazon-adsystem.com/widgets/q?ServiceVersion=20070822&OneJS=1&Operation=GetAdHtml&MarketPlace=US&source=ac&ref=tf_til&ad_type=product_link&tracking_id=wavsourcecom-20&marketplace=amazon&region=US&placement='+String(exasin)+'&asins='+String(exasin)+'&linkId=92779e9ff932cc7d012574f265461d6e&show_border=true&link_opens_in_new_window=true&price_color=333333&title_color=0066c0&bg_color=ffffff"></iframe>'+
+// NEXT LINE IS OLDER PRODUCT AD CODE -- DOESN'T WORK ANYMORE
+//exasinad+='<iframe name="extrabox" id="extrabox" src="http://rcm-na.amazon-adsystem.com/e/cm?lt1=_blank&bc1=000000&IS2=1&bg1=FFFFFF&fc1=000000&lc1=0000FF&t=wavsourcecom-20&o=1&p=8&l=as1&m=amazon&f=ifr&asins='+String(exasin)+'" style="width:120px; height:240px" scrolling="no" marginwidth="0" marginheight="0" frameborder="0"></iframe>'+
+'</td></tr></table>';
+}
+//end exasin code
+
+// continue adstring assembly, if exasin does not equal zero
+if (adnum>0 && exasin!=0) {adstring+=exasinad;}
+if (adnum==0 && exasin!=0) {var adstring=exasinad;}
+// end adstring assembly
+
+// set adstring to nothing if there are no tall ads and no exasin
+if (adnum==0 && exasin==0) {var adstring='';}
+
+// begin display in left column, if left has been chosen
+if (riteorleft==0) {
+$(adstring).appendTo( $('#TTTL') );       // this line appends adstring onto the end of the pre-exising google ad in the left column
+//$(adstring).insertBefore( $('#TTTL') ); // this line was replaced with the line above, after a google ad was drawn in left column prior to this js file being executed
+}
+// end display in left column, if left has been chosen
